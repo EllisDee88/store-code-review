@@ -1,0 +1,168 @@
+<!--
+The HTML acts as a static architecture for the system. each 'id' attribute acts as a hook for the JS Script to interact with the UI.
+
+========== How HTML and JavaScript Connect with Each Other ==========
+The relationship between the files works as a functional flow:
+1. Selection: JavaScript uses document.getElementById("milk") to find specific HTML elements.
+2. Input: The user types a number into the HTML input. JS reads this via .value.
+3. Calculation: JS multiplies the input value by the hardcoded constants (e.g., PRICE_MILK).
+4. Output: JS injects the result back into the HTML by changing .textContent for the elements with IDs total and receipt.
+
+========== Summary of System Functions ==========
+1. startTimer(): A background process that ensures security/cleanliness by resetting the system after inactivity.
+2. calculateTotal(): Performs the core business logic—summing up the cost of selected items.
+3. printReceipt(): Generates a formatted text summary, including a dynamic timestamp provided by formatDateTime().
+4. resetCart(): Returns the system state to zero, acting as a "flush" for the data inputs.
+-->
+
+<!-- Declares this document as HTML5 -->
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Title shown in browser tab -->
+  <title>Green Basket Grocery</title>
+
+  <!-- Links external JS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<!-- startTimer() function runs when the pade loads-->
+<body onload="startTimer()">
+
+  <!-- =================================================== -->
+  <!--                    HEADER SECTION                   -->
+  <!-- =================================================== -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="logo">GB</div>
+        <div>
+          <h1>Green Basket Grocery</h1>
+          <p class="tagline">Fresh picks, simple checkout</p>
+        </div>
+      </div>
+
+      <!-- Badge showing demo version -->
+      <div class="badge">Demo Store</div>
+    </div>
+  </header>
+
+  <!-- =================================================== -->
+  <!--                    MAIN CONTENT                     -->
+  <!-- =================================================== -->
+  <main class="container">
+
+
+  <!-- =================================================== -->
+  <!--                    SHOP ITEMS CARD                  -->
+  <!-- =================================================== -->
+    <section class="card">
+      <h2>Shop Items</h2>
+      <p class="hint">Enter quantities, then calculate or print your receipt. Inactivity resets after 15 seconds.</p>
+
+      <div class="grid">
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-name">Milk</div>
+            <div class="item-price">$3.50</div>
+          </div>
+          <!-- Number input for quantity -->
+          <!-- oninput starts inactivity timer when user types -->
+          <input type="number" id="milk" value="0" min="0" oninput="startTimer()" />
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-name">Bread</div>
+            <div class="item-price">$2.25</div>
+          </div>
+          <input type="number" id="bread" value="0" min="0" oninput="startTimer()" />
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-name">Eggs</div>
+            <div class="item-price">$4.10</div>
+          </div>
+          <input type="number" id="eggs" value="0" min="0" oninput="startTimer()" />
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-name">Rice</div>
+            <div class="item-price">$6.00</div>
+          </div>
+          <input type="number" id="rice" value="0" min="0" oninput="startTimer()" />
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-name">Apples</div>
+            <div class="item-price">$2.80</div>
+          </div>
+          <input type="number" id="apples" value="0" min="0" oninput="startTimer()" />
+        </div>
+
+        <div class="item">
+          <div class="item-info">
+            <div class="item-name">Chicken</div>
+            <div class="item-price">$9.50</div>
+          </div>
+          <input type="number" id="chicken" value="0" min="0" oninput="startTimer()" />
+        </div>
+      </div>
+
+      <!-- =================================================== -->
+      <!--                    ACTION BUTTONS                   -->
+      <!-- =================================================== -->
+      <div class="actions">
+        <!-- Calls JS function to calculate total cost -->
+        <button class="btn primary" onclick="calculateTotal()">Calculate Total</button>
+        <!-- Calls function to generate printable receipt -->
+        <button class="btn" onclick="printReceipt()">Print Receipt</button>
+        <!-- Calls function to reset cart and show message -->
+        <button class="btn danger" onclick="resetCart('Cart reset.')">Reset Cart</button>
+
+        <!-- Displays total amount -->
+        <div class="total-box">
+          <span class="total-label">Total</span>
+          <!-- Total value will be updated by JS -->
+          <span id="total" class="total-value">$0.00</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =================================================== -->
+    <!--                    RECEIPT SECTION                  -->
+    <!-- =================================================== -->
+    <section class="card">
+      <div class="receipt-head">
+        <h2>Receipt</h2>
+        <!-- Shows inactivity hint -->
+        <span class="small-note">Tip: do nothing for 15 seconds to see the inactivity reset message.</span>
+      </div>
+      <!-- JS will insert receipt content here -->
+      <pre id="receipt" class="receipt">Ready.</pre>
+    </section>
+  </main>
+
+  <!-- =================================================== -->
+  <!--                       FOOTER                        -->
+  <!-- =================================================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>Green Basket Grocery, Halifax, NS</span>
+      <span class="muted">Training demo</span>
+    </div>
+  </footer>
+
+ <!-- Links external JS file -->
+  <script src="script.js"></script>
+</body>
+</html>

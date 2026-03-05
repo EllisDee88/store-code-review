@@ -1,0 +1,269 @@
+
+/* Root Variables work as global color and style variables. */
+:root {
+  --green: #1e7a3b;
+  --green-dark: #14572a;
+  --cream: #f7f6f2;
+  --card: #ffffff;
+  --text: #1b1f24;
+  --muted: #6a7480;
+  --line: #e7e9ee;
+  --danger: #b42318;
+  --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Makes padding & border included inside width */
+* { box-sizing: border-box; }
+
+/* Styles the <body> from your HTML */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  background: var(--cream);
+}
+
+/* Styles <header class="header"> */
+.header {
+  background: linear-gradient(180deg, var(--green) 0%, var(--green-dark) 100%);
+  color: white;
+  padding: 18px 0;
+}
+
+/* Styles the inner div inside header */
+.header-inner {
+  width: min(1000px, 92vw);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Matches with <div class="brand"> */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Matches with <div class="logo">GB</div> */
+.logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.18);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.tagline {
+  margin: 2px 0 0 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.badge {
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+/* MAIN CONTAINER */
+.container {
+  width: min(1000px, 92vw);
+  margin: 18px auto;
+}
+
+/* Styles both cards (Shop Items & Receipt) */
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  margin-bottom: 14px;
+}
+
+h2 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.hint {
+  margin: 0 0 14px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ITEMS GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Each grocery item box */
+.item {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #fff;
+}
+
+/* Left side of item (name + price) */
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* Item name like Milk, Bread, etc. */
+.item-name {
+  font-weight: 700;
+}
+
+.item-price {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* INPUT FIELD */
+input[type="number"] {
+  width: 84px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  outline: none;
+  font-size: 14px;
+}
+
+/* Green border when clicked */
+input[type="number"]:focus {
+  border-color: rgba(30, 122, 59, 0.55);
+}
+
+
+.actions {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BUTTONS  */
+/* Matches <button class="btn"> */
+.btn {
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+/* Calculate button */
+.btn.primary {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+}
+
+.btn.primary:hover { filter: brightness(0.97); }
+
+/* Reset button */
+.btn.danger {
+  background: #fff;
+  border-color: rgba(180, 35, 24, 0.35);
+  color: var(--danger);
+}
+
+/* TOTAL BOX */
+/* Matches <div class="total-box"> */
+.total-box {
+  margin-left: auto;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: #f3fbf6;
+  border: 1px solid rgba(30, 122, 59, 0.18);
+}
+
+/* "Total" label */
+.total-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* Total value */
+.total-value {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+/* RECEIPT  */
+/* Matches <pre id="receipt" class="receipt"> */
+.receipt-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.small-note {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.receipt {
+  margin: 10px 0 0 0;
+  border: 1px dashed #cfd6df;
+  background: #fbfbfb;
+  border-radius: 12px;
+  padding: 12px;
+  min-height: 140px;
+  white-space: pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 13px;
+}
+
+/* FOOTER  */
+.footer {
+  padding: 16px 0 22px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.muted { color: var(--muted); }
+
+/* Responsive layout for mobile */
+@media (max-width: 700px) {
+  .grid { grid-template-columns: 1fr; }
+  .total-box { margin-left: 0; width: 100%; justify-content: space-between; }
+}
